@@ -1,22 +1,23 @@
 
-const newCard = () => {
-  console.log('genero una nueva carta');
-  let suits = ['♦', '♥', '♠',  '♣']
-  let numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-  
-  // 1. aleatoreamente generar un palo y un numero
+function newCard() {
+  const suits = ['♠', '♥', '♦', '♣'];
+  const numbers = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
-  // 2.a Mostrar el palo en los div#arriba y div#abajo el palo
-  // 2.b Renderizar el número en el div#number
+  const randomSuit = suits[Math.floor(Math.random() * suits.length)];
+  const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
-  // condicional u operador ternario: si es corazon o diamante cambiar el color a rojo
-  // si es hoja o trebol entocnes el color es negro 
+  const topSuit = document.querySelector('.card-suit-top');
+  const number = document.querySelector('.card-number');
+  const bottomSuit = document.querySelector('.card-suit-bottom');
+
+  topSuit.textContent = randomSuit;
+  number.textContent = randomNumber;
+  bottomSuit.textContent = randomSuit;
+
+  const isRed = (randomSuit === '♥' || randomSuit === '♦');
+  const color = isRed ? 'red' : 'black';
+
+  topSuit.style.color = color;
+  number.style.color = color;
+  bottomSuit.style.color = color;
 }
-
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-  newCard()
-};
-
-setInterval(newCard, 1000);
